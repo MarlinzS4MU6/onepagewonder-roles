@@ -1,0 +1,26 @@
+
+  <center><%= link_to 'New Post', new_post_path, class: "btn btn-red " %></center>
+
+
+<br>
+<div class="center">
+    <div class="row">
+     <% @posts.each do |post| %>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <%= image_tag post.image.url, :class => "img_preview" %>
+              <div class="caption">
+                <h3><%= link_to post.title, post, :class => "img-blog"  %></h3>
+                <p><%= post.content.truncate_words(20) %></p>
+                <p><%= post.permalink %></p>
+                  <%= link_to 'Show', post, class:"btn btn-red " %>
+                  <%= link_to 'Edit', edit_post_path(post), class:"btn btn-red " %>
+                  <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>
+<br>
